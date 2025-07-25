@@ -85,4 +85,18 @@ python hlsm/main/rollout_and_evaluate.py alfred/eval/hlsm_full/eval_hlsm_valid_s
     --policies_path /path/to/your/processed_data/policy_data/decompose_<experiment_name>_modify.json \
     --qa_path /path/to/your/raw_llm_outputs/decomposed_qa.txt \
     --replan
+```
 
+## Citation
+If you find this work useful, please consider citing our paper:
+```bibtex
+@article{shin2024socratic,
+  title={Socratic Planner: Self-QA-Based Zero-Shot Planning for Embodied Instruction Following},
+  author={Shin, Suyeon and Kim, Junghyun and Kang, Gi-Cheon and Zhang, Byoung-Tak and others},
+  journal={arXiv preprint arXiv:2404.15190},
+  year={2024}
+}
+```
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
