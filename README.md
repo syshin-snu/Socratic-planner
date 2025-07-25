@@ -68,10 +68,21 @@ Embodied Instruction Following (EIF) is the task of executing natural language i
     ```
     This script will parse the raw text, normalize action and object names to match the ALFRED vocabulary, and save the final JSON file in the specified output directory. This final file can then be used with the `--policies_path` argument in the evaluation script.
     
+
 ## Execution
 
-Run the agent in the ALFRED environment for evaluation.
+Run the agent in the ALFRED environment for evaluation using `hlsm/main/rollout_and_evaluate.py`.
+
+**Command-line Arguments:**
+-   `def_name`: The name of the experiment definition file located in `hlsm/lgp/experiment_definitions/alfred/eval/`. This file configures the evaluation split (e.g., `eval_hlsm_valid_seen`).
+-   `--policies_path`: Path to the final, normalized policy JSON file generated during the Data Preparation step.
+-   `--qa_path`: Path to the QA text file generated for the replanning module.
+-   `--replan`: A flag to enable the Socratic Planner's replanning mechanism when the agent fails.
 
 ### Standard Environment
 ```bash
-python hlsm/main/rollout_and_evaluate.py alfred/eval/hlsm_full/eval_hlsm_valid_seen --policies_path /path/to/your/policies.json --qa_path /path/to/your/decomposed_qa.txt --replan
+python hlsm/main/rollout_and_evaluate.py alfred/eval/hlsm_full/eval_hlsm_valid_seen \
+    --policies_path /path/to/your/processed_data/policy_data/decompose_<experiment_name>_modify.json \
+    --qa_path /path/to/your/raw_llm_outputs/decomposed_qa.txt \
+    --replan
+
