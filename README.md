@@ -58,8 +58,16 @@ Embodied Instruction Following (EIF) is the task of executing natural language i
     ```bash
     python make_policy/make_policy_decomposition.py --alfred_data_path /path/to/your/alfred/data
     ```
-2.  **Convert Data**: Use `hlsm/modify_data.py` to convert the generated text files into the JSON format required by `rollout_and_evaluate.py`. (Check the paths inside the script).
-
+2.  **Convert Data**: Use the `hlsm/modify_data.py` script to convert the generated raw policy text file into a structured and normalized JSON format that the agent can use.
+    ```bash
+    python hlsm/modify_data.py \
+        --input-dir /path/to/your/raw_llm_outputs \
+        --output-dir /path/to/your/processed_data \
+        --mode <experiment_name> \
+        --policy-file-num <file_number>
+    ```
+    This script will parse the raw text, normalize action and object names to match the ALFRED vocabulary, and save the final JSON file in the specified output directory. This final file can then be used with the `--policies_path` argument in the evaluation script.
+    
 ## Execution
 
 Run the agent in the ALFRED environment for evaluation.
